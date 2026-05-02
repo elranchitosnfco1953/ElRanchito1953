@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Ranchito – Restaurante Típico desde 1953 · Puebla</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* ── Variables ── */
+:root{
+  --navy:#1a1f5e;
+  --navy-dark:#0f1340;
+  --gold:#f5b800;
+  --gold-light:#ffd447;
+  --gold-dim:#c99200;
+  --cream:#fdf6e3;
+  --text-light:#e8dfc8;
+  --red:#8b0000;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Crimson Text',Georgia,serif;font-size:17px;line-height:1.55;color:#333;background:#fff}
+
+/* ── TOP BAR ── */
+.top-bar{
+  background:#f8f8f8;
+  padding:9px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-family:'Poppins',sans-serif;
+  font-size:.82rem;
+  border-bottom:1px solid #eee;
+}
+.top-bar a{color:#555;text-decoration:none;transition:.2s}
+.top-bar a:hover{color:var(--red)}
+.top-bar .sep{margin:0 8px;color:#ccc}
+.top-bar .right{display:flex;align-items:center;gap:18px}
+.top-bar .factura{font-weight:600;color:var(--red)!important}
+.top-bar .socials a{margin-left:8px;font-weight:700;color:#555}
+
+/* ── MAIN NAV ── */
+.main-nav{
+  background:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 40px;
+  box-shadow:0 2px 6px rgba(0,0,0,.07);
+  position:sticky;
+  top:0;
+  z-index:200;
+}
+.main-nav .logo img{height:64px}
+.main-nav ul{display:flex;list-style:none;gap:22px;font-family:'Poppins',sans-serif}
+.main-nav ul li a{
+  color:#333;
+  text-decoration:none;
+  font-size:.9rem;
+  font-weight:400;
+  padding-bottom:3px;
+  border-bottom:2px solid transparent;
+  transition:.2s;
+}
+.main-nav ul li a:hover,
+.main-nav ul li a.active-page{color:var(--red);border-bottom-color:var(--red)}
+.hamburger{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#333}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  height:72vh;
+  min-height:420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:brightness(52%);
+  z-index:0;
+}
+.hero-text{position:relative;z-index:1}
+.hero-text .eyebrow{font-family:'Poppins',sans-serif;font-size:.95rem;letter-spacing:.25em;text-transform:uppercase;opacity:.88}
+.hero-text h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,7vw,5rem);
+  color:var(--gold);
+  text-shadow:0 2px 24px rgba(245,184,0,.4);
+  margin:10px 0 6px;
+}
+.hero-text .tagline{font-style:italic;font-size:1.25rem;opacity:.92}
+.hero-cta{
+  margin-top:28px;
+  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
+}
+.btn-gold{
+  display:inline-block;padding:13px 32px;
+  background:var(--gold);color:var(--navy-dark);
+  font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem;
+  border-radius:4px;text-decoration:none;transition:.2s;
+}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-outline-w{
+  display:inline-block;padding:11px 30px;
+  border:2px solid #fff;color:#fff;
+  font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem;
+  border-radius:4px;text-decoration:none;transition:.2s;
+}
+.btn-outline-w:hover{background:#fff;color:#333}
+
+/* ── WELCOME ── */
+.welcome{padding:80px 40px;background:#fdfcf9}
+.welcome-inner{max-width:1100px;margin:0 auto;display:flex;gap:44px;align-items:center}
+.welcome-imgs{flex:1;display:flex;gap:14px}
+.welcome-imgs img{width:calc(50% - 7px);height:380px;object-fit:cover;border-radius:6px}
+.welcome-copy{flex:1}
+.welcome-copy .pre{font-family:'Poppins',sans-serif;font-size:.88rem;color:#888;margin-bottom:8px}
+.welcome-copy h2{
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem;color:#333;
+  border-bottom:2px solid var(--red);
+  display:inline-block;padding-bottom:8px;margin-bottom:18px;
+}
+.welcome-copy p{color:#555;margin-bottom:26px;font-size:1rem}
+.btn-dark{
+  display:inline-block;padding:12px 28px;
+  background:#333;color:#fff;
+  font-family:'Poppins',sans-serif;font-weight:600;font-size:.88rem;
+  border-radius:4px;text-decoration:none;transition:.2s;
+}
+.btn-dark:hover{background:var(--red)}
+
+/* ── FEATURED DISHES ── */
+.featured{padding:80px 40px;text-align:center;background:#fff}
+.section-head .pre{font-family:'Poppins',sans-serif;font-size:.88rem;color:#888;margin-bottom:6px}
+.section-head h2{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--red);margin-bottom:48px}
+.dishes-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:28px;max-width:1100px;margin:0 auto 48px;
+}
+.dish-card{
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 4px 18px rgba(0,0,0,.07);
+  overflow:hidden;
+  transition:.25s;
+}
+.dish-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,.13)}
+.dish-card img{width:100%;height:220px;object-fit:cover;display:block}
+.dish-card-body{padding:18px 20px}
+.dish-card-body h4{font-family:'Playfair Display',serif;font-size:1.15rem;color:#333;margin-bottom:7px}
+.dish-card-body p{color:#666;font-size:.9rem;font-family:'Poppins',sans-serif}
+
+/* ── ABOUT + HOURS ── */
+.about-hours{padding:80px 40px;background:#f8f8f8}
+.about-hours-inner{max-width:1100px;margin:0 auto;display:flex;gap:28px}
+.ah-box{
+  flex:1;background:#fff;border-radius:8px;
+  padding:36px 32px;text-align:center;
+  box-shadow:0 2px 12px rgba(0,0,0,.04);
+}
+.ah-box img{width:100%;height:220px;object-fit:cover;border-radius:5px;margin-bottom:20px}
+.ah-box h2{font-family:'Playfair Display',serif;color:var(--red);font-size:1.7rem;margin-bottom:14px}
+.ah-box p{color:#555;font-family:'Poppins',sans-serif;font-size:.9rem}
+.ah-box .hours-time{font-weight:700;color:#333!important;font-size:1rem}
+
+/* ── DIVIDER ── */
+.gold-divider{
+  height:5px;
+  background:linear-gradient(90deg,var(--navy-dark),var(--gold),var(--navy-dark));
+}
+
+/* ══════════════════════════════════
+   MENÚ SECTION
+══════════════════════════════════ */
+.menu-wrapper{background:var(--navy-dark);color:var(--cream)}
+
+.menu-header{
+  background:linear-gradient(160deg,var(--navy-dark) 0%,#252a7a 60%,var(--navy-dark) 100%);
+  text-align:center;
+  padding:52px 20px 42px;
+  position:relative;
+  overflow:hidden;
+  border-bottom:4px solid var(--gold);
+}
+.menu-header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(245,184,0,.13) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hbadge{
+  display:inline-block;border:3px solid var(--gold);border-radius:50%;
+  width:88px;height:88px;line-height:84px;font-size:40px;
+  margin-bottom:12px;background:rgba(245,184,0,.1);
+  box-shadow:0 0 40px rgba(245,184,0,.35);
+  animation:pulse 3s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{box-shadow:0 0 40px rgba(245,184,0,.35)}50%{box-shadow:0 0 70px rgba(245,184,0,.6)}}
+.menu-header h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,5vw,3.2rem);
+  color:var(--gold);
+  letter-spacing:.04em;
+  text-shadow:0 2px 20px rgba(245,184,0,.4);
+}
+.menu-header .sub{font-style:italic;font-size:1.1rem;color:var(--text-light);margin-top:4px}
+
+/* Sticky menu tabs */
+.menu-tabs{
+  background:var(--navy);
+  display:flex;flex-wrap:wrap;justify-content:center;
+  border-bottom:3px solid var(--gold);
+  position:sticky;top:97px;z-index:100;
+}
+.menu-tabs button{
+  background:none;border:none;
+  color:var(--text-light);
+  font-family:'Crimson Text',serif;
+  font-size:.92rem;font-weight:600;
+  padding:12px 12px;
+  cursor:pointer;transition:all .22s;
+  position:relative;
+}
+.menu-tabs button::after{
+  content:'';position:absolute;bottom:0;left:18%;right:18%;
+  height:3px;background:var(--gold);
+  transform:scaleX(0);transition:transform .22s;
+}
+.menu-tabs button:hover{color:var(--gold-light)}
+.menu-tabs button.active{color:var(--gold)}
+.menu-tabs button.active::after{transform:scaleX(1)}
+
+/* Menu sections */
+.msection{display:none;padding:44px 20px 70px;max-width:1120px;margin:0 auto}
+.msection.active{display:block;animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.stitle{text-align:center;margin-bottom:32px}
+.stitle h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.7rem,4vw,2.6rem);
+  color:var(--gold);
+  display:inline-block;
+}
+.stitle h2::before,.stitle h2::after{content:'—';color:var(--gold-dim);margin:0 10px}
+.stitle p{font-style:italic;color:var(--text-light);margin-top:5px;font-size:.95rem}
+
+.mgrid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+
+.mcard{
+  background:linear-gradient(135deg,rgba(255,255,255,.055) 0%,rgba(255,255,255,.02) 100%);
+  border:1px solid rgba(245,184,0,.22);
+  border-radius:13px;overflow:hidden;
+  transition:transform .22s,box-shadow .22s,border-color .22s;
+}
+.mcard:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 38px rgba(0,0,0,.45),0 0 0 1px rgba(245,184,0,.4);
+  border-color:rgba(245,184,0,.5);
+}
+.mcard-img{width:100%;height:195px;object-fit:cover;display:block;background:#0a0d30}
+.mcard-img.tall{height:225px}
+.mcard-body{padding:16px 18px 18px}
+.mcard-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold-light);margin-bottom:7px}
+.mcard-desc{color:var(--text-light);font-size:.92rem;line-height:1.5}
+.mcard-price{
+  display:inline-block;margin-top:10px;
+  background:var(--gold);color:var(--navy-dark);
+  font-family:'Playfair Display',serif;font-weight:700;font-size:.98rem;
+  padding:3px 13px;border-radius:20px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{
+  background:rgba(245,184,0,.14);
+  border:1px solid rgba(245,184,0,.33);
+  color:var(--gold-light);font-size:.82rem;
+  padding:2px 9px;border-radius:12px;white-space:nowrap;
+}
+
+.lcard{
+  background:rgba(255,255,255,.03);
+  border-left:3px solid var(--gold);
+  border-radius:0 11px 11px 0;
+  padding:16px 20px;margin-bottom:20px;
+}
+.lcard h3{
+  font-family:'Playfair Display',serif;
+  color:var(--gold);font-size:1.22rem;
+  margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.lcard h3::before{content:'✦';font-size:.6rem;color:var(--gold-dim)}
+.ilist{list-style:none}
+.ilist li{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:7px 0;border-bottom:1px dashed rgba(245,184,0,.16);gap:10px;
+}
+.ilist li:last-child{border-bottom:none}
+.ilist .n{color:var(--text-light);flex:1}
+.ilist .p{color:var(--gold);font-family:'Playfair Display',serif;font-weight:700;white-space:nowrap;font-size:.96rem}
+
+.mnote{
+  text-align:center;font-style:italic;
+  color:var(--gold-dim);font-size:.9rem;
+  padding:11px 16px;
+  border:1px dashed rgba(245,184,0,.27);
+  border-radius:8px;margin:20px 0;
+}
+
+.hbox{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(245,184,0,.2);
+  border-radius:13px;padding:28px 32px;
+  line-height:1.8;max-width:860px;margin:0 auto;
+}
+.hbox p{margin-bottom:12px}
+.hbox strong{color:var(--gold-light)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:22px}
+.citem{
+  background:rgba(245,184,0,.08);
+  border:1px solid rgba(245,184,0,.23);
+  border-radius:10px;padding:14px 16px;text-align:center;
+}
+.citem .ico{font-size:1.4rem;display:block;margin-bottom:4px}
+.citem a{color:var(--gold-light);text-decoration:none}
+.citem a:hover{text-decoration:underline}
+
+/* ── CONTACT ── */
+.contact-section{padding:72px 40px;text-align:center;background:#fff}
+.contact-section h2{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--red);margin-bottom:14px}
+.contact-section .addr{font-family:'Poppins',sans-serif;font-weight:600;color:var(--red);margin-bottom:10px}
+.contact-section p{font-family:'Poppins',sans-serif;color:#555;font-size:.95rem}
+
+/* ── FOOTER ── */
+footer{
+  background:#222;color:#aaa;
+  text-align:center;padding:28px;
+  font-family:'Poppins',sans-serif;font-size:.82rem;
+  letter-spacing:.06em;
+}
+footer span{color:var(--gold);opacity:.7}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  .top-bar{flex-direction:column;text-align:center;padding:8px;gap:6px}
+  .main-nav{padding:12px 18px}
+  .main-nav ul{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#fff;padding:16px 24px;box-shadow:0 8px 20px rgba(0,0,0,.1);gap:14px}
+  .main-nav ul.open{display:flex}
+  .hamburger{display:block}
+  .welcome-inner{flex-direction:column;text-align:center}
+  .welcome-imgs{flex-direction:column}
+  .welcome-imgs img{width:100%;height:220px}
+  .about-hours-inner{flex-direction:column}
+  .menu-tabs button{font-size:.78rem;padding:10px 7px}
+  .hbox{padding:16px}
+  .mcard-img{height:160px}
+  .hero-text h1{font-size:2.4rem}
+  .hero-cta{flex-direction:column;align-items:center}
+  .btn-gold,.btn-outline-w{width:80%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ TOP BAR ══ -->
+<div class="top-bar">
+  <div class="left">
+    <a href="mailto:el_ranchito_snfco@hotmail.com">el_ranchito_snfco@hotmail.com</a>
+    <span class="sep">|</span>
+    <a href="tel:+522228886515">222 888 6515</a>
+  </div>
+  <div class="right">
+    <a href="#facturacion" class="factura">Facturar*</a>
+    <div class="socials">
+      <a href="https://www.facebook.com/Ran1953/" target="_blank" rel="noopener">FB</a>
+      <a href="https://www.instagram.com/ranchito.pue/" target="_blank" rel="noopener">IG</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAIN NAV ══ -->
+<nav class="main-nav" id="mainNav">
+  <div class="logo">
+    <img src="https://static.wixstatic.com/media/30fea6_8ad85ee964ee4114be97ef14793e708f~mv2.png" alt="Logo El Ranchito">
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">☰</button>
+  <ul id="navLinks">
+    <li><a href="#inicio" class="active-page" onclick="closeMenu()">Inicio</a></li>
+    <li><a href="#bienvenido" onclick="closeMenu()">Bienvenido</a></li>
+    <li><a href="#alimentos" onclick="closeMenu()">Alimentos</a></li>
+    <li><a href="#menu" onclick="closeMenu()">Menú</a></li>
+    <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="inicio" class="hero">
+  <img
+    src="https://static.wixstatic.com/media/30fea6_05076c25029b4cbd8c2a4442c87cc2df~mv2.png"
+    alt="El Ranchito restaurante" class="hero-bg">
+  <div class="hero-text">
+    <div class="eyebrow">Restaurante Típico · Puebla</div>
+    <h1>"El Ranchito"</h1>
+    <div class="tagline">Sazón inolvidable desde 1953</div>
+    <div class="hero-cta">
+      <a href="#menu" class="btn-gold">Ver Menú Completo</a>
+      <a href="#contacto" class="btn-outline-w">Reserva Ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WELCOME ══ -->
+<section id="bienvenido" class="welcome">
+  <div class="welcome-inner">
+    <div class="welcome-imgs">
+      <img src="https://static.wixstatic.com/media/30fea6_6ac8f6b00c0b448cb85031136903ee0e~mv2.png" alt="Interior 1" loading="lazy">
+      <img src="https://static.wixstatic.com/media/30fea6_f91e9fd65eef4bdca7faf14ae49fad66~mv2.png" alt="Interior 2" loading="lazy">
+    </div>
+    <div class="welcome-copy">
+      <div class="pre">Bienvenido</div>
+      <h2>Restaurante Típico desde 1953</h2>
+      <p>El Ranchito es un lugar donde la buena cocina y el ambiente se combinan de una manera muy especial. Con el sazón inolvidable que nos caracteriza, es perfecto para enamorar a comensales de cualquier edad.</p>
+      <a href="#menu" class="btn-dark">Explorar el Menú</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURED ══ -->
+<section id="alimentos" class="featured">
+  <div class="section-head">
+    <div class="pre">Nuestros alimentos</div>
+    <h2>Platillos Estrella</h2>
+  </div>
+  <div class="dishes-grid">
+    <div class="dish-card">
+      <img src="TAMPIQUEÑA.jpg" alt="Tampiqueña" loading="lazy">
+      <div class="dish-card-body">
+        <h4>Sábana de Res Tampiqueña</h4>
+        <p>Con enchiladas, rajas y frijoles.</p>
+      </div>
+    </div>
+    <div class="dish-card">
+      <img src="CEMITA_DE_MILANESA.jpg" alt="Cemita Poblana" loading="lazy">
+      <div class="dish-card-body">
+        <h4>Cemita Poblana</h4>
+        <p>Milanesa crujiente y quesillo fresco.</p>
+      </div>
+    </div>
+    <div class="dish-card">
+      <img src="CHALUPAS.jpg" alt="Chalupas" loading="lazy">
+      <div class="dish-card-body">
+        <h4>Chalupas Poblanas</h4>
+        <p>Tradición en cada bocado.</p>
+      </div>
+    </div>
+    <div class="dish-card">
+      <img src="CHILE_EN_NOGADA.jpg" alt="Chile en Nogada" loading="lazy">
+      <div class="dish-card-body">
+        <h4>Chile en Nogada</h4>
+        <p>Disponible todo el año.</p>
+      </div>
+    </div>
+    <div class="dish-card">
+      <img src="MOLE_POBLANO_con_muslo.jpg" alt="Mole Poblano" loading="lazy">
+      <div class="dish-card-body">
+        <h4>Mole Poblano</h4>
+        <p>Receta auténtica de la casa.</p>
+      </div>
+    </div>
+    <div class="dish-card">
+      <img src="POZOLE.jpg" alt="Pozole" loading="lazy">
+      <div class="dish-card-body">
+        <h4>Pozole Estilo Guerrero</h4>
+        <p>Sabor que nos define.</p>
+      </div>
+    </div>
+  </div>
+  <a href="#menu" class="btn-dark">Ver Menú Completo con Precios</a>
+</section>
+
+<!-- ══ ABOUT + HOURS ══ -->
+<section class="about-hours">
+  <div class="about-hours-inner">
+    <div class="ah-box">
+      <img src="https://static.wixstatic.com/media/30fea6_85547295ebc44582b9352cf9035ce233~mv2.jpg" alt="Tradición" loading="lazy">
+      <h2>Quiénes Somos</h2>
+      <p>Servido con orgullo y tradición a Puebla desde 1953. Más de 70 años de sazón que nos hacen únicos.</p>
+    </div>
+    <div class="ah-box">
+      <img src="https://static.wixstatic.com/media/30fea6_311fc9abbff048d0b54385a840d3d426~mv2.jpg" alt="Chocolate" loading="lazy">
+      <h2>Horarios</h2>
+      <p class="hours-time">Lunes – Domingo: 10:00 a.m. – 21:00 p.m.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GOLD DIVIDER ══ -->
+<div class="gold-divider"></div>
+
+<!-- ══════════ MENÚ COMPLETO ══════════ -->
+<div class="menu-wrapper" id="menu">
+
+  <div class="menu-header">
+    <div class="hbadge">🌮</div>
+    <h2>Menú Completo</h2>
+    <div class="sub">Todos los alimentos se preparan al momento de ordenarlos — gracias por su amable espera</div>
+  </div>
+
+  <nav class="menu-tabs" id="menuTabs">
+    <button onclick="showMenu('des')" class="active">Desayunos</button>
+    <button onclick="showMenu('esp')">Especialidades</button>
+    <button onclick="showMenu('ent')">Entradas</button>
+    <button onclick="showMenu('coc')">Cocina Poblana</button>
+    <button onclick="showMenu('car')">Carnes</button>
+    <button onclick="showMenu('aco')">Para Acompañar</button>
+    <button onclick="showMenu('beb')">Bebidas</button>
+    <button onclick="showMenu('bar')">Bar</button>
+    <button onclick="showMenu('pos')">Postres</button>
+    <button onclick="showMenu('his')">Historia</button>
+  </nav>
+
+  <!-- ── DESAYUNOS ── -->
+  <div class="msection active" id="des">
+    <div class="stitle"><h2>Desayunos</h2><p>De 9 a.m. a 12:00 p.m. · Todos incluyen jugo ó café, fruta ó yogurt y pan salado</p></div>
+    <div class="mnote">Todos nuestros alimentos se preparan al momento de ordenarlos, gracias por su amable espera.</div>
+    <div class="mgrid g2">
+      <div class="mcard"><img class="mcard-img" src="DESAYUNO_huevos_con_salchicha.jpg" alt="Desayuno 1"><div class="mcard-body"><div class="mcard-title">Desayuno 1</div><div class="mcard-desc">Huevos al Gusto: revueltos ó estrellados (solos) ó con jamón, salchicha, longaniza, salsa verde ó salsa roja.</div><span class="mcard-price">$90</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="DESAYUNO_huevos_divorciados.jpg" alt="Desayuno 2"><div class="mcard-body"><div class="mcard-title">Desayuno 2</div><div class="mcard-desc">Huevos divorciados, a la mexicana ó rancheros.</div><span class="mcard-price">$95</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="DESAYUNO_chilaquiles_rojos_con_pollo.jpg" alt="Desayuno 3"><div class="mcard-body"><div class="mcard-title">Desayuno 3</div><div class="mcard-desc">Chilaquiles verdes ó rojos con pollo.</div><span class="mcard-price">$100</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="DESAYUNO_milanesa_de_pollo.jpg" alt="Desayuno 4"><div class="mcard-body"><div class="mcard-title">Desayuno 4</div><div class="mcard-desc">Milanesa de pollo ó cerdo, acompañada con ensalada y frijoles refritos.</div><span class="mcard-price">$92</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="DESAYUNO_enfrijoladas.jpg" alt="Desayuno 5"><div class="mcard-body"><div class="mcard-title">Desayuno 5</div><div class="mcard-desc">Enfrijoladas, rellenas con jamón y queso.</div><span class="mcard-price">$85</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="CHALUPAS.jpg" alt="Desayuno 6"><div class="mcard-body"><div class="mcard-title">Desayuno 6</div><div class="mcard-desc">Tres picaditas con frijoles refritos.</div><span class="mcard-price">$75</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="DESAYUNO_omelette_1.jpg" alt="Desayuno 7"><div class="mcard-body"><div class="mcard-title">Desayuno 7</div><div class="mcard-desc">Omelet Europeo a la poblana con champiñones.</div><span class="mcard-price">$95</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="DESAYUNO_RANCHITO_chilaquiles_con_cecina.jpg" alt="Desayuno El Ranchito"><div class="mcard-body"><div class="mcard-title">Desayuno "El Ranchito"</div><div class="mcard-desc">Chilaquiles verdes ó rojos con cecina.</div><span class="mcard-price">$115</span></div></div>
+    </div>
+    <div class="lcard" style="margin-top:28px">
+      <h3>A la carta</h3>
+      <ul class="ilist">
+        <li><span class="n">Pan de dulce (pieza)</span><span class="p">$10</span></li>
+        <li><span class="n">Yogurt</span><span class="p">$30</span></li>
+        <li><span class="n">Ensalada de fruta con yogurt</span><span class="p">$52</span></li>
+        <li><span class="n">Jugo de naranja</span><span class="p">$38</span></li>
+        <li><span class="n">Chocomilk</span><span class="p">$38</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── ESPECIALIDADES ── -->
+  <div class="msection" id="esp">
+    <div class="stitle"><h2>Especialidades de la Casa</h2></div>
+    <div class="mgrid g2">
+      <div class="mcard"><img class="mcard-img" src="CHALUPAS.jpg" alt="Chalupas"><div class="mcard-body"><div class="mcard-title">Chalupas (6)</div><div class="mcard-desc">Tortillas pequeñas con salsa verde o roja, con cebolla y carne de cerdo ó pollo deshebrado.</div><span class="mcard-price">$60</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="CHALUPAS_DE_MOLE.jpg" alt="Chalupas con mole"><div class="mcard-body"><div class="mcard-title">Chalupas con mole (6)</div><div class="mcard-desc">Tortillas pequeñas con mole poblano y pollo deshebrado.</div><span class="mcard-price">$66</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="CHALUPAS_BARROCAS.jpg" alt="Chalupas Barrocas"><div class="mcard-body"><div class="mcard-title">Chalupas Barrocas (6)</div><div class="mcard-desc">Tortillas pequeñas con mole, pipián y salsa.</div><span class="mcard-price">$78</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="CHILAQUILES_CON_MOLE.jpg" alt="Chilaquiles con mole"><div class="mcard-body"><div class="mcard-title">Chilaquiles con mole</div><div class="mcard-desc">Totopos con mole poblano y pollo deshebrado.</div><span class="mcard-price">$115</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="CHILE_EN_NOGADA.jpg" alt="Chile en Nogada"><div class="mcard-body"><div class="mcard-title">Chile en Nogada</div><div class="mcard-desc">¡Disfrútalo todo el año! Relleno de frutas, carne, bañado con nogada, granada y perejil.</div><span class="mcard-price">$195</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="MOLE_POBLANO_con_muslo.jpg" alt="Mole Poblano"><div class="mcard-body"><div class="mcard-title">Mole Poblano</div><div class="chips"><span class="chip">Solo $80</span><span class="chip">Con arroz $90</span><span class="chip">Pierna/muslo $95</span><span class="chip">½ pechuga $105</span><span class="chip">Pierna+arroz $120</span><span class="chip">½ pechuga+arroz $130</span></div></div></div>
+      <div class="mcard"><img class="mcard-img" src="POZOLE.jpg" alt="Pozole"><div class="mcard-body"><div class="mcard-title">Pozole (Grande)</div><div class="chips"><span class="chip">Maciza/pollo/lengua/oreja $70</span><span class="chip">Surtida de cerdo $65</span></div></div></div>
+      <div class="mcard"><img class="mcard-img" src="CEMITA_DE_MILANESA.jpg" alt="Cemita de Milanesa"><div class="mcard-body"><div class="mcard-title">Cemitas Poblanas</div><div class="mcard-desc">Con quesillo, aguacate, cebolla y pápalo. Pídelas con rajitas o chipotles.</div><div class="chips"><span class="chip">Milanesa $70</span><span class="chip">Pata $65</span></div></div></div>
+      <div class="mcard"><img class="mcard-img" src="CEMITA_DE_PATA.jpg" alt="Dedos"><div class="mcard-body"><div class="mcard-title">Dedos: taquitos dorados</div><div class="mcard-desc">Orden de 3.</div><span class="mcard-price">$27</span></div></div>
+    </div>
+  </div>
+
+  <!-- ── ENTRADAS ── -->
+  <div class="msection" id="ent">
+    <div class="stitle"><h2>Entradas</h2></div>
+    <div class="mgrid g2">
+      <div class="mcard"><img class="mcard-img" src="CONSOME_CON_POLLO.jpg" alt="Consomé"><div class="mcard-body"><div class="mcard-title">Consomé con…</div><ul class="ilist"><li><span class="n">Pollo deshebrado Ch./Gde.</span><span class="p">$62 / $72</span></li><li><span class="n">Pierna o muslo (1 pza.)</span><span class="p">$75</span></li><li><span class="n">Media pechuga</span><span class="p">$90</span></li></ul></div></div>
+      <div class="mcard"><img class="mcard-img" src="ORDENES_DE_ARROZ.jpg" alt="Arroz"><div class="mcard-body"><div class="mcard-title">Arroz</div><ul class="ilist"><li><span class="n">Rojo (solo)</span><span class="p">$45</span></li><li><span class="n">Con 2 huevos estrellados</span><span class="p">$72</span></li><li><span class="n">Con cucharada de mole</span><span class="p">$65</span></li></ul></div></div>
+      <div class="mcard"><img class="mcard-img" src="POLLO_FRITO.jpg" alt="Pollo hervido"><div class="mcard-body"><div class="mcard-title">Pollo hervido</div><ul class="ilist"><li><span class="n">Pierna o muslo</span><span class="p">$48</span></li><li><span class="n">Media pechuga</span><span class="p">$63</span></li></ul></div></div>
+      <div class="mcard"><img class="mcard-img" src="ENSALADA_RANCHITO.jpg" alt="Ensaladas"><div class="mcard-body"><div class="mcard-title">Ensaladas</div><ul class="ilist"><li><span class="n">Ensalada del Cheff</span><span class="p">$135</span></li><li><span class="n">Ensalada Ranchito</span><span class="p">$120</span></li></ul></div></div>
+    </div>
+  </div>
+
+  <!-- ── COCINA POBLANA ── -->
+  <div class="msection" id="coc">
+    <div class="stitle"><h2>Cocina Poblana</h2></div>
+    <div class="mgrid g2">
+      <div class="mcard"><img class="mcard-img" src="TOSTADAS_DE_POLLO.jpg" alt="Tostadas de pollo"><div class="mcard-body"><div class="mcard-title">Tostadas de pollo (3)</div><span class="mcard-price">$75</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="TOSTADAS_DE_PATA.jpg" alt="Tostadas de pata"><div class="mcard-body"><div class="mcard-title">Tostadas de pata (3)</div><span class="mcard-price">$65</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="DESAYUNO_chilaquiles_rojos_con_pollo.jpg" alt="Chilaquiles con pollo"><div class="mcard-body"><div class="mcard-title">Chilaquiles verdes ó rojos con pollo</div><span class="mcard-price">$85</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="DESAYUNO_RANCHITO_chilaquiles_con_cecina.jpg" alt="Chilaquiles con cecina"><div class="mcard-body"><div class="mcard-title">Chilaquiles verdes ó rojos con cecina</div><span class="mcard-price">$135</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="CHILAQUILES_DIVORCIADOS.jpg" alt="Chilaquiles divorciados"><div class="mcard-body"><div class="mcard-title">Chilaquiles divorciados con pollo deshebrado</div><span class="mcard-price">$140</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="PIPIAN_VERDE.jpg" alt="Pipián verde"><div class="mcard-body"><div class="mcard-title">Pipián verde</div><div class="chips"><span class="chip">Pierna o muslo $95</span><span class="chip">Media pechuga $110</span></div></div></div>
+      <div class="mcard"><img class="mcard-img" src="PIPIAN_ROJO.jpg" alt="Pipián rojo"><div class="mcard-body"><div class="mcard-title">Pipián rojo</div><div class="chips"><span class="chip">Pierna o muslo $95</span><span class="chip">Media pechuga $110</span></div></div></div>
+      <div class="mcard"><img class="mcard-img" src="DESAYUNO_omelette_2.jpg" alt="Huevos con mole"><div class="mcard-body"><div class="mcard-title">Huevos con mole (2)</div><span class="mcard-price">$72</span></div></div>
+    </div>
+    <div class="stitle" style="margin-top:36px"><h2 style="font-size:1.6rem;">Enchiladas <span style="font-style:italic;font-weight:400;color:var(--text-light);font-size:.65em">rellenas de pollo</span></h2></div>
+    <div class="mgrid g2">
+      <div class="mcard"><img class="mcard-img" src="ENCHILADAS_FRANCISCANAS.jpg" alt="Enchiladas Franciscanas"><div class="mcard-body"><div class="mcard-title">Franciscanas (3)</div><div class="mcard-desc">Mole, pipián verde y rojo.</div><span class="mcard-price">$135</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="ENMOLADAS.jpg" alt="Enchiladas de mole"><div class="mcard-body"><div class="mcard-title">De mole poblano (3)</div><span class="mcard-price">$130</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="PIPIAN_VERDE.jpg" alt="Enchiladas de pipián"><div class="mcard-body"><div class="mcard-title">De pipián verde ó rojo (3)</div><span class="mcard-price">$120</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="TOSTADAS_DE_POLLO.jpg" alt="Enchiladas verdes"><div class="mcard-body"><div class="mcard-title">Verdes ó rojas (3) con lechuga, crema y queso</div><span class="mcard-price">$120</span></div></div>
+    </div>
+  </div>
+
+  <!-- ── CARNES ── -->
+  <div class="msection" id="car">
+    <div class="stitle"><h2>Carnes</h2></div>
+    <div class="mgrid g2">
+      <div class="mcard"><img class="mcard-img" src="TAMPIQUEÑA.jpg" alt="Tampiqueña"><div class="mcard-body"><div class="mcard-title">Tampiqueña 200g</div><span class="mcard-price">$155</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="CECINA.jpg" alt="Cecina"><div class="mcard-body"><div class="mcard-title">Cecina natural 200g</div><span class="mcard-price">$110</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="ARRACHERA.jpg" alt="Arrachera"><div class="mcard-body"><div class="mcard-title">Arrachera 200g</div><span class="mcard-price">$158</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="DESAYUNO_milanesa_de_pollo.jpg" alt="Milanesa"><div class="mcard-body"><div class="mcard-title">Milanesa de pollo o cerdo</div><span class="mcard-price">$85</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="POLLO_FRITO.jpg" alt="Pollo frito"><div class="mcard-body"><div class="mcard-title">Pollo frito (media pechuga)</div><span class="mcard-price">$110</span></div></div>
+    </div>
+  </div>
+
+  <!-- ── PARA ACOMPAÑAR ── -->
+  <div class="msection" id="aco">
+    <div class="stitle"><h2>Para Acompañar</h2></div>
+    <div class="mgrid g2">
+      <div class="mcard"><img class="mcard-img" src="FRIJOLES_DE_LA_OLLA.jpg" alt="Frijoles de la olla"><div class="mcard-body"><div class="mcard-title">Frijoles de la olla</div><span class="mcard-price">$35</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="ORDEN_DE_FRIJOLES_REFRITOS.jpg" alt="Frijoles refritos"><div class="mcard-body"><div class="mcard-title">Frijoles refritos</div><span class="mcard-price">$40</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="ORDEN_DE_GUACAMOLE.jpg" alt="Guacamole"><div class="mcard-body"><div class="mcard-title">Orden de guacamole</div><span class="mcard-price">$38</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="ORDEN_DE_QUESO_PANELA.jpg" alt="Queso panela"><div class="mcard-body"><div class="mcard-title">Orden de queso panela</div><span class="mcard-price">$38</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="ORDEN_DE_PAPAS_FRANCESAS.jpg" alt="Papas"><div class="mcard-body"><div class="mcard-title">Orden de papas a la francesa</div><span class="mcard-price">$42</span></div></div>
+    </div>
+    <div class="stitle" style="margin-top:36px"><h2 style="font-size:1.6rem;">Para los Peques 🧒</h2></div>
+    <div class="mgrid g2">
+      <div class="mcard"><img class="mcard-img" src="TOSTADAS_DE_POLLO.jpg" alt="Tostadas peques"><div class="mcard-body"><div class="mcard-title">Tostadas de pollo (2)</div><span class="mcard-price">$60</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="TACOS_DE_POLLO.jpg" alt="Tacos"><div class="mcard-body"><div class="mcard-title">Tacos de pollo (3) suaves o dorados</div><span class="mcard-price">$70</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="CHALUPAS.jpg" alt="Chalupas peques"><div class="mcard-body"><div class="mcard-title">Chalupas con frijoles y pollo deshebrado</div><span class="mcard-price">$60</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="HAMBURGUESA.jpg" alt="Hamburguesa"><div class="mcard-body"><div class="mcard-title">Hamburguesa con papas a la francesa</div><span class="mcard-price">$70</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="NUGGETS.jpg" alt="Nuggets"><div class="mcard-body"><div class="mcard-title">Nuggets de pollo con papas a la francesa</div><span class="mcard-price">$65</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="CLUB_SANDWICH.jpg" alt="Club sandwich"><div class="mcard-body"><div class="mcard-title">Club sandwich con papas a la francesa</div><span class="mcard-price">$92</span></div></div>
+    </div>
+  </div>
+
+  <!-- ── BEBIDAS ── -->
+  <div class="msection" id="beb">
+    <div class="stitle"><h2>Bebidas</h2></div>
+    <div class="mgrid g2">
+      <div class="mcard"><img class="mcard-img tall" src="CHOCOLATE_CALIENTE.jpg" alt="Chocolate"><div class="mcard-body"><div class="mcard-title">Chocolate de metate c/leche</div><span class="mcard-price">$58</span></div></div>
+      <div class="mcard"><img class="mcard-img tall" src="CHOCOMILK.jpg" alt="Chocomilk"><div class="mcard-body"><div class="mcard-title">Chocomilk</div><span class="mcard-price">$38</span></div></div>
+      <div class="mcard"><img class="mcard-img tall" src="LIMONADA.jpg" alt="Limonada"><div class="mcard-body"><div class="mcard-title">Limonada</div><div class="chips"><span class="chip">Copa $40</span><span class="chip">Jarra $95</span></div></div></div>
+      <div class="mcard"><img class="mcard-img tall" src="NARANJADA.jpg" alt="Naranjada"><div class="mcard-body"><div class="mcard-title">Naranjada</div><div class="chips"><span class="chip">Copa $40</span><span class="chip">Jarra $95</span></div></div></div>
+      <div class="mcard"><img class="mcard-img tall" src="AGUA_DE_JAMAICA.jpg" alt="Jamaica"><div class="mcard-body"><div class="mcard-title">Agua de Jamaica</div><div class="chips"><span class="chip">Copa $28</span><span class="chip">Jarra $80</span></div></div></div>
+      <div class="mcard"><img class="mcard-img tall" src="AGUA_DE_HORCHATA.jpg" alt="Aguas frescas"><div class="mcard-body"><div class="mcard-title">Aguas frescas (sabores)</div><div class="chips"><span class="chip">Copa $28</span><span class="chip">Jarra $80</span></div></div></div>
+    </div>
+    <div class="lcard" style="margin-top:24px">
+      <h3>Otras bebidas sin alcohol</h3>
+      <ul class="ilist">
+        <li><span class="n">Refresco</span><span class="p">$28</span></li>
+        <li><span class="n">Copa de agua (sabores)</span><span class="p">$28</span></li>
+        <li><span class="n">Leche sola o para café</span><span class="p">$28</span></li>
+        <li><span class="n">Café americano</span><span class="p">$35</span></li>
+        <li><span class="n">Café capuccino</span><span class="p">$40</span></li>
+        <li><span class="n">Café express</span><span class="p">$40</span></li>
+        <li><span class="n">Té (sabores)</span><span class="p">$22</span></li>
+      </ul>
+    </div>
+    <div class="mgrid g2" style="margin-top:6px">
+      <div class="lcard"><h3>Ron (copa)</h3><ul class="ilist"><li><span class="n">Bacardi Blanco 750ml</span><span class="p">$75</span></li><li><span class="n">Bacardi Solera 750ml</span><span class="p">$80</span></li><li><span class="n">Matusalem Clasico 750ml</span><span class="p">$85</span></li><li><span class="n">Matusalem Gran Reserva 750ml</span><span class="p">$90</span></li><li><span class="n">Matusalem Platino 750ml</span><span class="p">$80</span></li><li><span class="n">Appleton State 750ml</span><span class="p">$85</span></li></ul></div>
+      <div class="lcard"><h3>Brandy (copa)</h3><ul class="ilist"><li><span class="n">Magno 700ml</span><span class="p">$75</span></li><li><span class="n">Terry 700ml</span><span class="p">$70</span></li><li><span class="n">Azteca De Oro 700ml</span><span class="p">$60</span></li><li><span class="n">Torres X 700ml</span><span class="p">$85</span></li></ul></div>
+      <div class="lcard"><h3>Vodka (copa)</h3><ul class="ilist"><li><span class="n">Absolut Azul 750ml</span><span class="p">$80</span></li><li><span class="n">Smirnoff 1lt</span><span class="p">$65</span></li><li><span class="n">Stolichnaya 750ml</span><span class="p">$85</span></li></ul></div>
+      <div class="lcard"><h3>Tequila (copa)</h3><ul class="ilist"><li><span class="n">Cuervo Especial 1lt</span><span class="p">$60</span></li><li><span class="n">Cuervo Tradicional Rep. 695ml</span><span class="p">$75</span></li><li><span class="n">Don Julio 70 750ml</span><span class="p">$100</span></li><li><span class="n">Don Julio Reposado 695ml</span><span class="p">$85</span></li><li><span class="n">Herradura Reposado 750ml</span><span class="p">$80</span></li><li><span class="n">Herradura Blanco 750ml</span><span class="p">$75</span></li><li><span class="n">Hornitos 750ml</span><span class="p">$80</span></li></ul></div>
+    </div>
+  </div>
+
+  <!-- ── BAR ── -->
+  <div class="msection" id="bar">
+    <div class="stitle"><h2>Bar</h2></div>
+    <div class="mgrid g2">
+      <div class="lcard"><h3>Ginebra (copa)</h3><ul class="ilist"><li><span class="n">Tanqueray 750ml</span><span class="p">$65</span></li><li><span class="n">Beefeater 750ml</span><span class="p">$75</span></li><li><span class="n">Bombay 750ml</span><span class="p">$80</span></li></ul></div>
+      <div class="lcard"><h3>Whisky (copa)</h3><ul class="ilist"><li><span class="n">Jack Daniels 700ml</span><span class="p">$85</span></li><li><span class="n">Buchanans 12 Años 750ml</span><span class="p">$110</span></li><li><span class="n">Chivas Regal 12 Años 750ml</span><span class="p">$100</span></li><li><span class="n">J. Walker Et. Negra 750ml</span><span class="p">$120</span></li><li><span class="n">J. Walker Et. Roja 750ml</span><span class="p">$80</span></li></ul></div>
+      <div class="lcard"><h3>Cognac (copa)</h3><ul class="ilist"><li><span class="n">Hennessy VS 700ml</span><span class="p">$120</span></li><li><span class="n">Martell VS 700ml</span><span class="p">$100</span></li></ul></div>
+      <div class="lcard"><h3>Licores (copa)</h3><ul class="ilist"><li><span class="n">Chinchon Dulce 1lt</span><span class="p">$70</span></li><li><span class="n">Chinchon Seco 1lt</span><span class="p">$75</span></li><li><span class="n">Bailey's 750ml</span><span class="p">$85</span></li><li><span class="n">Sambuca Blanco 750ml</span><span class="p">$85</span></li><li><span class="n">Sambuca Negro 750ml</span><span class="p">$90</span></li><li><span class="n">Frangelico 750ml</span><span class="p">$90</span></li><li><span class="n">Licor 43 750ml</span><span class="p">$95</span></li><li><span class="n">Amaretto Disaronno 750ml</span><span class="p">$95</span></li></ul></div>
+    </div>
+    <div class="lcard" style="margin-top:8px"><h3>Coctelería</h3><ul class="ilist"><li><span class="n">Piña Colada</span><span class="p">$85</span></li><li><span class="n">Piedra</span><span class="p">$80</span></li><li><span class="n">Sangría (copa)</span><span class="p">$50</span></li><li><span class="n">Jarra de sangría</span><span class="p">$140</span></li><li><span class="n">Bombón</span><span class="p">$85</span></li><li><span class="n">Mojito</span><span class="p">$80</span></li><li><span class="n">Martinis (Cosmopolitan, seco, extra seco)</span><span class="p">$85</span></li></ul></div>
+  </div>
+
+  <!-- ── POSTRES ── -->
+  <div class="msection" id="pos">
+    <div class="stitle"><h2>Postres</h2></div>
+    <div class="mgrid g2">
+      <div class="mcard"><img class="mcard-img" src="FLAN.jpg" alt="Flan Napolitano"><div class="mcard-body"><div class="mcard-title">Flan Napolitano</div><span class="mcard-price">$40</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="DURAZNOS.jpg" alt="Duraznos"><div class="mcard-body"><div class="mcard-title">Duraznos en almíbar</div><div class="mcard-desc">Solos, con crema o rompope.</div><span class="mcard-price">$35</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="HELADOS.jpg" alt="Helado"><div class="mcard-body"><div class="mcard-title">Helado en cáscara de frutas</div><span class="mcard-price">$65</span></div></div>
+      <div class="mcard"><img class="mcard-img" src="FLAN.jpg" alt="Tartaletas"><div class="mcard-body"><div class="mcard-title">Tartaletas (gran variedad)</div><span class="mcard-price">$45</span></div></div>
+    </div>
+  </div>
+
+  <!-- ── HISTORIA ── -->
+  <div class="msection" id="his">
+    <div class="stitle"><h2>Nuestra Historia</h2><p>Más de 70 años de sazón inolvidable</p></div>
+    <div class="hbox">
+      <p>El <strong>16 de enero de 1953</strong>, llega a la ciudad de Puebla la <strong>Familia Rebollar Gálvez</strong>, conformada por Don Pablo Rebollar Ramírez y Doña Carmen Gálvez de Rebollar, con el sueño de buscar fortuna con tan solo 90 viejos pesos en la bolsa.</p>
+      <p>Para poder mantenerse, idearon vender pozole afuera del mercadito de El Alto. Tres meses después compraron la mitad de una caseta, la llamaron <em>"Los Jarritos"</em>. Gracias al trabajo y esfuerzo de la familia, seis meses después compraron la otra mitad.</p>
+      <p>En <strong>1965</strong> se adquirió un local en el aún llamado edificio Briseño, al que llamaron <strong>"El Ranchito"</strong>. Ahí se fueron complementando con el exquisito pozole estilo guerrero y los famosos dedos, además del mole poblano, chalupas y chiles en nogada.</p>
+      <p>Desde <strong>1999</strong>, en el bello Paseo de San Francisco, se llega majestuoso <strong>El Ranchito®</strong>, administrado por la <strong>Familia Rebollar Gálvez y Nicolás Saldívar Torres</strong>, ofreciéndoles lo mejor de la comida típica poblana, conservando el sazón, la calidad y la atención que ha caracterizado a "El Ranchito" desde hace más de 50 años.</p>
+      <p>Es un orgullo para la <strong>Familia Rebollar Gálvez</strong> celebrar con usted y su familia este aniversario.</p>
+    </div>
+    <div class="cgrid">
+      <div class="citem"><span class="ico">🌐</span><a href="http://www.restauranteelranchito1953.com.mx" target="_blank" rel="noopener">restauranteelranchito1953.com.mx</a></div>
+      <div class="citem"><span class="ico">✉️</span><a href="mailto:el_ranchito1953@hotmail.com">el_ranchito1953@hotmail.com</a></div>
+      <div class="citem"><span class="ico">📞</span>(222) 236-60-34</div>
+    </div>
+    <div class="mnote" style="margin-top:22px">Aceptamos tarjetas de crédito o débito. Excepto American Express.</div>
+  </div>
+
+</div><!-- /menu-wrapper -->
+
+<!-- ══ CONTACT ══ -->
+<section id="contacto" class="contact-section">
+  <h2>Contacto</h2>
+  <p class="addr">Calle 10 Nte. 5, Barrio del Alto, Puebla, México</p>
+  <p>Tel: <a href="tel:+522228886515" style="color:var(--red)">222 888 6515</a> | <a href="tel:+522225692547" style="color:var(--red)">222 569 2547</a></p>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>© 2026 <span>El Ranchito</span> · Restaurante Típico desde 1953 · Puebla, México</p>
+</footer>
+
+<script>
+/* ── Main nav hamburger ── */
+function toggleMenu(){
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+/* ── Menu tabs ── */
+const MENU_IDS = ['des','esp','ent','coc','car','aco','beb','bar','pos','his'];
+function showMenu(id){
+  document.querySelectorAll('.msection').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.menu-tabs button').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const idx = MENU_IDS.indexOf(id);
+  document.querySelectorAll('.menu-tabs button')[idx].classList.add('active');
+  const tabsTop = document.getElementById('menuTabs').getBoundingClientRect().top + window.scrollY;
+  window.scrollTo({top: tabsTop - 100, behavior:'smooth'});
+}
+
+/* ── Sticky nav active link on scroll ── */
+const navLinks = document.querySelectorAll('.main-nav ul li a');
+const sections = document.querySelectorAll('section[id], div[id="menu"]');
+window.addEventListener('scroll', ()=>{
+  let current = '';
+  sections.forEach(s=>{
+    if(window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a=>{
+    a.classList.remove('active-page');
+    if(a.getAttribute('href')==='#'+current) a.classList.add('active-page');
+  });
+});
+</script>
+</body>
+</html>
