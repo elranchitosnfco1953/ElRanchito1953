@@ -1,379 +1,161 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio | REST. EL RANCHITO - Sazón Inolvidable desde 1953</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        /* --- TUS ESTILOS CSS INTEGRADOS --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            background-color: #fff;
-            scroll-behavior: smooth;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .container-flex {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Lora', serif;
-            font-weight: 700;
-        }
-
-        a {
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        /* --- HEADER Y NAVEGACIÓN --- */
-        header {
-            background-color: #fff;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-        }
-
-        .top-header {
-            background-color: #f8f8f8;
-            padding: 10px 50px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .top-header a { color: #555; }
-        .top-header a:hover { color: #8b0000; }
-        .separator { margin: 0 10px; color: #ccc; }
-
-        .right-links { display: flex; align-items: center; gap: 20px; }
-        .factura-link { font-weight: 600; color: #8b0000 !important; }
-        .social-icons a { margin-left: 10px; font-weight: bold; }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-        }
-
-        .logo img { height: 70px; }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        nav ul li a {
-            color: #333;
-            font-weight: 400;
-            font-size: 0.95rem;
-        }
-
-        nav ul li a:hover {
-            color: #8b0000;
-            border-bottom: 2px solid #8b0000;
-        }
-
-        /* --- SECCIÓN HERO --- */
-        .hero {
-            position: relative;
-            height: 70vh;
-            color: #fff;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-image-container {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            filter: brightness(60%);
-        }
-
-        .hero-text h2 { font-size: 1.5rem; letter-spacing: 3px; font-weight: 400; }
-        .hero-text h1 { font-size: 4rem; margin: 10px 0; }
-        .hero-text p { font-size: 1.2rem; font-style: italic; }
-
-        /* --- SECCIÓN BIENVENIDO --- */
-        .welcome-section {
-            padding: 80px 0;
-            background-color: #fdfcf9;
-        }
-
-        .welcome-images {
-            flex: 1;
-            display: flex;
-            gap: 15px;
-        }
-
-        .welcome-images img {
-            width: calc(50% - 8px);
-            height: 400px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        .welcome-text { flex: 1; }
-        .welcome-text h3 { color: #888; font-size: 1rem; margin-bottom: 10px; font-family: 'Poppins', sans-serif;}
-        .welcome-text h2 { color: #333; font-size: 2.5rem; margin-bottom: 20px; border-bottom: 2px solid #8b0000; display: inline-block; padding-bottom: 10px;}
-        .welcome-text p { color: #555; margin-bottom: 30px; }
-
-        /* --- SECCIÓN ALIMENTOS --- */
-        .alimentos-section {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .alimentos-section h3 { color: #888; font-size: 1rem; font-family: 'Poppins', sans-serif;}
-        .alimentos-section h2 { font-size: 2.5rem; color: #8b0000; margin-bottom: 50px; }
-
-        .platillos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .platillo-item {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-
-        .platillo-item:hover { transform: translateY(-5px); }
-
-        .platillo-item img {
-            width: 100%;
-            height: 220px;
-            object-fit: contain; /* Para que tus fotos aisladas se vean completas */
-            background-color: #fff;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .platillo-item h4 { color: #333; margin-bottom: 10px; font-size: 1.2rem; }
-        .platillo-item p { color: #666; font-size: 0.9rem; }
-
-        /* --- SECCIÓN SOBRE MI / HORARIOS --- */
-        .about-hours-section {
-            padding: 80px 0;
-            background-color: #f8f8f8;
-        }
-
-        .about-box, .hours-box {
-            flex: 1;
-            background: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            text-align: center;
-        }
-
-        .featured-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .about-box h2, .hours-box h2 { color: #8b0000; margin-bottom: 20px; }
-        .hours-time {
-            font-weight: 700;
-            color: #333 !important;
-            font-size: 1.1rem;
-        }
-
-        /* --- SECCIÓN CONTACTO --- */
-        .contacto-section {
-            padding: 80px 0;
-            text-align: center;
-            background-color: #fff;
-        }
-
-        .address { font-weight: 600; margin-bottom: 20px; color: #8b0000;}
-
-        /* --- BOTONES --- */
-        .btn-dark {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #333;
-            color: #fff;
-            border-radius: 5px;
-            font-weight: 600;
-        }
-        .btn-dark:hover { background-color: #8b0000; }
-
-        .btn-outline {
-            display: inline-block;
-            padding: 10px 25px;
-            border: 2px solid #8b0000;
-            color: #8b0000;
-            border-radius: 5px;
-            font-weight: 600;
-        }
-        .btn-outline:hover { background-color: #8b0000; color: #fff; }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 30px 0;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .top-header { flex-direction: column; text-align: center; padding: 10px; }
-            nav { flex-direction: column; padding: 15px; }
-            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .container-flex { flex-direction: column; text-align: center; }
-            .welcome-images { flex-direction: column; }
-            .welcome-images img { width: 100%; height: 250px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Ranchito – Menú</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1a1f5e;--navy-dark:#0f1340;--gold:#f5b800;--gold-light:#ffd447;--gold-dim:#c99200;--cream:#fdf6e3;--text-light:#e8dfc8}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--navy-dark);color:var(--cream);font-family:'Crimson Text',Georgia,serif;font-size:17px;line-height:1.55}
+header{background:linear-gradient(160deg,var(--navy-dark) 0%,#252a7a 60%,var(--navy-dark) 100%);text-align:center;padding:52px 20px 42px;position:relative;overflow:hidden;border-bottom:4px solid var(--gold)}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(245,184,0,.13) 0%,transparent 70%);pointer-events:none}
+.hbadge{display:inline-block;border:3px solid var(--gold);border-radius:50%;width:96px;height:96px;line-height:90px;font-size:44px;margin-bottom:14px;background:rgba(245,184,0,.1);box-shadow:0 0 40px rgba(245,184,0,.35);animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 40px rgba(245,184,0,.35)}50%{box-shadow:0 0 70px rgba(245,184,0,.6)}}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(2.1rem,6vw,3.8rem);color:var(--gold);letter-spacing:.04em;text-shadow:0 2px 20px rgba(245,184,0,.4)}
+header .sub{font-style:italic;font-size:1.15rem;color:var(--text-light);margin-top:5px}
+header .since{display:inline-block;margin-top:11px;padding:3px 15px;border:1px solid var(--gold-dim);border-radius:20px;font-size:.83rem;color:var(--gold-light);letter-spacing:.14em;text-transform:uppercase}
+nav{background:var(--navy);display:flex;flex-wrap:wrap;justify-content:center;border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:100}
+nav button{background:none;border:none;color:var(--text-light);font-family:'Crimson Text',serif;font-size:.93rem;font-weight:600;padding:12px 13px;cursor:pointer;transition:all .22s;position:relative}
+nav button::after{content:'';position:absolute;bottom:0;left:18%;right:18%;height:3px;background:var(--gold);transform:scaleX(0);transition:transform .22s}
+nav button:hover{color:var(--gold-light)}
+nav button.active{color:var(--gold)}
+nav button.active::after{transform:scaleX(1)}
+section{display:none;padding:44px 20px 70px;max-width:1120px;margin:0 auto}
+section.active{display:block;animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(11px)}to{opacity:1;transform:none}}
+.stitle{text-align:center;margin-bottom:34px}
+.stitle h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--gold);display:inline-block}
+.stitle h2::before,.stitle h2::after{content:'—';color:var(--gold-dim);margin:0 10px}
+.stitle p{font-style:italic;color:var(--text-light);margin-top:5px;font-size:.96rem}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(auto-fill,minmax(310px,1fr))}
+.card{background:linear-gradient(135deg,rgba(255,255,255,.055) 0%,rgba(255,255,255,.02) 100%);border:1px solid rgba(245,184,0,.22);border-radius:13px;overflow:hidden;transition:transform .22s,box-shadow .22s,border-color .22s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 38px rgba(0,0,0,.45),0 0 0 1px rgba(245,184,0,.4);border-color:rgba(245,184,0,.5)}
+.card-img{width:100%;height:200px;object-fit:cover;object-position:center;display:block;background:#0a0d30}
+.card-body{padding:17px 19px 19px}
+.card-title{font-family:'Playfair Display',serif;font-size:1.13rem;color:var(--gold-light);margin-bottom:7px}
+.card-desc{color:var(--text-light);font-size:.94rem;line-height:1.5}
+.card-price{display:inline-block;margin-top:10px;background:var(--gold);color:var(--navy-dark);font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;padding:3px 13px;border-radius:20px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{background:rgba(245,184,0,.14);border:1px solid rgba(245,184,0,.33);color:var(--gold-light);font-size:.83rem;padding:2px 9px;border-radius:12px;white-space:nowrap}
+.lcard{background:rgba(255,255,255,.03);border-left:3px solid var(--gold);border-radius:0 11px 11px 0;padding:17px 21px;margin-bottom:20px}
+.lcard h3{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.26rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.lcard h3::before{content:'✦';font-size:.63rem;color:var(--gold-dim)}
+.ilist{list-style:none}
+.ilist li{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px dashed rgba(245,184,0,.16);gap:10px}
+.ilist li:last-child{border-bottom:none}
+.ilist .n{color:var(--text-light);flex:1}
+.ilist .p{color:var(--gold);font-family:'Playfair Display',serif;font-weight:700;white-space:nowrap;font-size:.97rem}
+.hbox{background:rgba(255,255,255,.04);border:1px solid rgba(245,184,0,.2);border-radius:13px;padding:28px 32px;line-height:1.8;max-width:860px;margin:0 auto}
+.hbox p{margin-bottom:12px}
+.hbox strong{color:var(--gold-light)}
+footer{text-align:center;padding:24px;border-top:2px solid rgba(245,184,0,.17);color:rgba(245,184,0,.44);font-size:.82rem;letter-spacing:.08em}
+@media(max-width:600px){nav button{font-size:.79rem;padding:10px 8px}.hbox{padding:17px}.card-img{height:165px}}
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="top-header">
-            <div class="contact-info">
-                <a href="mailto:el_ranchito_snfco@hotmail.com">el_ranchito_snfco@hotmail.com</a>
-                <span class="separator">|</span>
-                <a href="tel:+522228886515">222 888 6515</a>
-            </div>
-            <div class="right-links">
-                <a href="#facturacion" class="factura-link">Facturar*</a>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/Ran1953/" target="_blank">FB</a>
-                    <a href="https://www.instagram.com/ranchito.pue/" target="_blank">IG</a>
-                </div>
-            </div>
-        </div>
-        <nav>
-            <div class="logo">
-                <img src="https://static.wixstatic.com/media/30fea6_8ad85ee964ee4114be97ef14793e708f~mv2.png" alt="Logo El Ranchito">
-            </div>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#bienvenido">Bienvenido</a></li>
-                <li><a href="#alimentos">Alimentos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+  <div class="hbadge">🌮</div>
+  <h1>El Ranchito</h1>
+  <div class="sub">Sazón inolvidable</div>
+  <div class="since">Restaurante Típico desde 1953</div>
+</header>
 
-    <section id="inicio" class="hero">
-        <div class="hero-image-container">
-            <img src="https://static.wixstatic.com/media/30fea6_05076c25029b4cbd8c2a4442c87cc2df~mv2.png" alt="Banner El Ranchito" class="hero-bg">
-        </div>
-        <div class="hero-text">
-            <h2>RESTAURANTE</h2>
-            <h1>"EL RANCHITO"</h1>
-            <p>Sazón inolvidable</p>
-        </div>
-    </section>
+<nav id="nav">
+  <button onclick="show('des')" class="active">Desayunos</button>
+  <button onclick="show('esp')">Especialidades</button>
+  <button onclick="show('coc')">Cocina Poblana</button>
+  <button onclick="show('beb')">Bebidas</button>
+  <button onclick="show('his')">Historia</button>
+</nav>
 
-    <section id="bienvenido" class="welcome-section">
-        <div class="container-flex">
-            <div class="welcome-images">
-                <img src="https://static.wixstatic.com/media/30fea6_6ac8f6b00c0b448cb85031136903ee0e~mv2.png" alt="Interior 1">
-                <img src="https://static.wixstatic.com/media/30fea6_f91e9fd65eef4bdca7faf14ae49fad66~mv2.png" alt="Interior 2">
-            </div>
-            <div class="welcome-text">
-                <h3>Bienvenido</h3>
-                <h2>Restaurante Típico desde 1953</h2>
-                <p>EL RANCHITO es un lugar donde la buena cocina y el ambiente se combinan de una manera muy especial. Con el sazón inolvidable que nos caracteriza es perfecto para enamorar a comensales de cualquier edad.</p>
-                <a href="#contacto" class="btn-dark">Reserva Ahora</a>
-            </div>
-        </div>
-    </section>
+<!-- DESAYUNOS -->
+<section id="des" class="active">
+  <div class="stitle"><h2>Desayunos</h2><p>De 9 a.m. a 12:00 p.m.</p></div>
+  <div class="grid g2">
+    <div class="card">
+      <img class="card-img" src="DESAYUNO_huevos_divorciados.jpg" alt="Huevos divorciados">
+      <div class="card-body"><div class="card-title">Huevos Divorciados</div><div class="card-desc">Huevos divorciados, a la mexicana ó rancheros.</div><span class="card-price">$95</span></div>
+    </div>
+    <div class="card">
+      <img class="card-img" src="DESAYUNO_chilaquiles_rojos_con_pollo.jpg" alt="Chilaquiles">
+      <div class="card-body"><div class="card-title">Chilaquiles</div><div class="card-desc">Verdes ó rojos con pollo.</div><span class="card-price">$100</span></div>
+    </div>
+  </div>
+</section>
 
-    <!-- SECCIÓN ALIMENTOS INTEGRADA -->
-    <section id="alimentos" class="alimentos-section">
-        <div class="container">
-            <h3>Nuestros alimentos</h3>
-            <h2>Platillos Estrella</h2>
-            <div class="platillos-grid">
-                <div class="platillo-item">
-                    <img src="TAMPIQUEÑA.jpg" alt="Tampiqueña">
-                    <h4>Sábana de Res Tampiqueña</h4>
-                    <p>Con enchiladas, rajas y frijoles.</p>
-                </div>
-                <div class="platillo-item">
-                    <img src="CEMITA_DE_MILANESA.jpg" alt="Cemita">
-                    <h4>Cemita Poblana</h4>
-                    <p>Milanesa crujiente y quesillo fresco.</p>
-                </div>
-                <div class="platillo-item">
-                    <img src="CHALUPAS.jpg" alt="Chalupas">
-                    <h4>Chalupas Poblanas</h4>
-                    <p>Tradición en cada bocado.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ESPECIALIDADES -->
+<section id="esp">
+  <div class="stitle"><h2>Especialidades</h2></div>
+  <div class="grid g2">
+    <div class="card">
+      <img class="card-img" src="CHALUPAS.jpg" alt="Chalupas">
+      <div class="card-body"><div class="card-title">Chalupas (6)</div><div class="card-desc">Tortillas pequeñas con salsa verde o roja y carne deshebrada.</div><span class="card-price">$60</span></div>
+    </div>
+    <div class="card">
+      <img class="card-img" src="CHILE_EN_NOGADA.jpg" alt="Chile en Nogada">
+      <div class="card-body"><div class="card-title">Chile en Nogada</div><div class="card-desc">¡Disfrútalo todo el año! Relleno de frutas y carne bañado con nogada.</div><span class="card-price">$195</span></div>
+    </div>
+  </div>
+</section>
 
-    <section class="about-hours-section">
-        <div class="container-flex">
-            <div class="about-box">
-                <img src="https://static.wixstatic.com/media/30fea6_85547295ebc44582b9352cf9035ce233~mv2.jpg" alt="Tradición" class="featured-img">
-                <h2>QUIÉNES SOMOS</h2>
-                <p>Servido con orgullo y tradición a Puebla desde 1953.</p>
-            </div>
-            <div class="hours-box">
-                <img src="https://static.wixstatic.com/media/30fea6_311fc9abbff048d0b54385a840d3d426~mv2.jpg" alt="Chocolate" class="featured-img">
-                <h2>HORARIOS</h2>
-                <p class="hours-time">Lunes - Domingo: 10:00 a. m. - 21:00 p. m.</p>
-            </div>
-        </div>
-    </section>
+<!-- COCINA POBLANA -->
+<section id="coc">
+  <div class="stitle"><h2>Cocina Poblana</h2></div>
+  <div class="lcard">
+    <h3>Tradición en su mesa</h3>
+    <ul class="ilist">
+      <li><span class="n">Mole Poblano con arroz</span><span class="p">$130</span></li>
+      <li><span class="n">Pipián Verde</span><span class="p">$110</span></li>
+      <li><span class="n">Enmoladas (3)</span><span class="p">$130</span></li>
+    </ul>
+  </div>
+</section>
 
-    <section id="contacto" class="contacto-section">
-        <div class="container">
-            <h2>CONTACTO</h2>
-            <p class="address">Calle 10 Nte. 5, Barrio del Alto, Puebla, México</p>
-            <p>Tel: 222 888 6515 | 222 569 2547</p>
-        </div>
-    </section>
+<!-- BEBIDAS -->
+<section id="beb">
+  <div class="stitle"><h2>Bebidas</h2></div>
+  <div class="lcard">
+    <h3>Refrescantes y Calientes</h3>
+    <ul class="ilist">
+      <li><span class="n">Chocolate de metate c/leche</span><span class="p">$58</span></li>
+      <li><span class="n">Café americano</span><span class="p">$35</span></li>
+      <li><span class="n">Agua de Jamaica (Copa)</span><span class="p">$28</span></li>
+    </ul>
+  </div>
+</section>
 
-    <footer>
-        <p>©2026 Restaurante El Ranchito. Sazón Inolvidable.</p>
-    </footer>
+<!-- HISTORIA -->
+<section id="his">
+  <div class="stitle"><h2>Nuestra Historia</h2><p>Más de 70 años de tradición</p></div>
+  <div class="hbox">
+    <p>El <strong>16 de enero de 1953</strong>, llega a la ciudad de Puebla la <strong>Familia Rebollar Gálvez</strong>, con el sueño de buscar fortuna con tan solo 90 viejos pesos en la bolsa.</p>
+    <p>En <strong>1965</strong> se adquirió un local en el edificio Briseño al que llamaron <strong>"El Ranchito"</strong>. Desde <strong>1999</strong> nos encontramos en el Paseo de San Francisco, conservando el <strong>"Sazón Inolvidable"</strong> que nos distingue.</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 El Ranchito - Restaurante Típico desde 1953. Puebla, México.
+</footer>
+
+<script>
+function show(id) {
+  // Ocultar todas las secciones
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  // Quitar estado activo a botones
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  
+  // Activar la seleccionada
+  document.getElementById(id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  
+  // Volver al inicio suavemente
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
 
 </body>
 </html>
