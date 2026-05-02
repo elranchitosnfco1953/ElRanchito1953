@@ -4,8 +4,268 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio | REST. EL RANCHITO - Sazón Inolvidable desde 1953</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- TUS ESTILOS CSS INTEGRADOS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .container-flex {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        /* --- HEADER Y NAVEGACIÓN --- */
+        header {
+            background-color: #fff;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+        }
+
+        .top-header {
+            background-color: #f8f8f8;
+            padding: 10px 50px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .top-header a { color: #555; }
+        .top-header a:hover { color: #8b0000; }
+        .separator { margin: 0 10px; color: #ccc; }
+
+        .right-links { display: flex; align-items: center; gap: 20px; }
+        .factura-link { font-weight: 600; color: #8b0000 !important; }
+        .social-icons a { margin-left: 10px; font-weight: bold; }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+        }
+
+        .logo img { height: 70px; }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: #333;
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+
+        nav ul li a:hover {
+            color: #8b0000;
+            border-bottom: 2px solid #8b0000;
+        }
+
+        /* --- SECCIÓN HERO --- */
+        .hero {
+            position: relative;
+            height: 70vh;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(60%);
+        }
+
+        .hero-text h2 { font-size: 1.5rem; letter-spacing: 3px; font-weight: 400; }
+        .hero-text h1 { font-size: 4rem; margin: 10px 0; }
+        .hero-text p { font-size: 1.2rem; font-style: italic; }
+
+        /* --- SECCIÓN BIENVENIDO --- */
+        .welcome-section {
+            padding: 80px 0;
+            background-color: #fdfcf9;
+        }
+
+        .welcome-images {
+            flex: 1;
+            display: flex;
+            gap: 15px;
+        }
+
+        .welcome-images img {
+            width: calc(50% - 8px);
+            height: 400px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .welcome-text { flex: 1; }
+        .welcome-text h3 { color: #888; font-size: 1rem; margin-bottom: 10px; font-family: 'Poppins', sans-serif;}
+        .welcome-text h2 { color: #333; font-size: 2.5rem; margin-bottom: 20px; border-bottom: 2px solid #8b0000; display: inline-block; padding-bottom: 10px;}
+        .welcome-text p { color: #555; margin-bottom: 30px; }
+
+        /* --- SECCIÓN ALIMENTOS --- */
+        .alimentos-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .alimentos-section h3 { color: #888; font-size: 1rem; font-family: 'Poppins', sans-serif;}
+        .alimentos-section h2 { font-size: 2.5rem; color: #8b0000; margin-bottom: 50px; }
+
+        .platillos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .platillo-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .platillo-item:hover { transform: translateY(-5px); }
+
+        .platillo-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain; /* Para que tus fotos aisladas se vean completas */
+            background-color: #fff;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .platillo-item h4 { color: #333; margin-bottom: 10px; font-size: 1.2rem; }
+        .platillo-item p { color: #666; font-size: 0.9rem; }
+
+        /* --- SECCIÓN SOBRE MI / HORARIOS --- */
+        .about-hours-section {
+            padding: 80px 0;
+            background-color: #f8f8f8;
+        }
+
+        .about-box, .hours-box {
+            flex: 1;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            text-align: center;
+        }
+
+        .featured-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .about-box h2, .hours-box h2 { color: #8b0000; margin-bottom: 20px; }
+        .hours-time {
+            font-weight: 700;
+            color: #333 !important;
+            font-size: 1.1rem;
+        }
+
+        /* --- SECCIÓN CONTACTO --- */
+        .contacto-section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .address { font-weight: 600; margin-bottom: 20px; color: #8b0000;}
+
+        /* --- BOTONES --- */
+        .btn-dark {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        .btn-dark:hover { background-color: #8b0000; }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 10px 25px;
+            border: 2px solid #8b0000;
+            color: #8b0000;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        .btn-outline:hover { background-color: #8b0000; color: #fff; }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .top-header { flex-direction: column; text-align: center; padding: 10px; }
+            nav { flex-direction: column; padding: 15px; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .container-flex { flex-direction: column; text-align: center; }
+            .welcome-images { flex-direction: column; }
+            .welcome-images img { width: 100%; height: 250px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -15,14 +275,11 @@
                 <a href="mailto:el_ranchito_snfco@hotmail.com">el_ranchito_snfco@hotmail.com</a>
                 <span class="separator">|</span>
                 <a href="tel:+522228886515">222 888 6515</a>
-                <span class="separator">|</span>
-                <a href="tel:+522225692547">222 569 2547</a>
             </div>
             <div class="right-links">
                 <a href="#facturacion" class="factura-link">Facturar*</a>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/Ran1953/" target="_blank">FB</a>
-                    <a href="https://twitter.com/ran1953" target="_blank">TW</a>
                     <a href="https://www.instagram.com/ranchito.pue/" target="_blank">IG</a>
                 </div>
             </div>
@@ -34,9 +291,8 @@
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#bienvenido">Bienvenido</a></li>
-                <li><a href="#alimentos">Nuestros alimentos</a></li>
-                <li><a href="#facturacion">Facturación</a></li>
-                <li><a href="#contacto">Contacto y Reservaciones</a></li>
+                <li><a href="#alimentos">Alimentos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -59,31 +315,49 @@
                 <img src="https://static.wixstatic.com/media/30fea6_f91e9fd65eef4bdca7faf14ae49fad66~mv2.png" alt="Interior 2">
             </div>
             <div class="welcome-text">
-                <h3>Inicio: Bienvenido</h3>
+                <h3>Bienvenido</h3>
                 <h2>Restaurante Típico desde 1953</h2>
-                <p>EL RANCHITO... un lugar donde la buena cocina y el ambiente se combinan de una manera muy especial. Con el sazón inolvidable que nos caracteriza es perfecto para enamorar a comensales de cualquier edad. Reserva y compruébalo por ti mismo.</p>
-                <a href="#contacto" class="btn-dark">disfruta</a>
+                <p>EL RANCHITO es un lugar donde la buena cocina y el ambiente se combinan de una manera muy especial. Con el sazón inolvidable que nos caracteriza es perfecto para enamorar a comensales de cualquier edad.</p>
+                <a href="#contacto" class="btn-dark">Reserva Ahora</a>
             </div>
         </div>
     </section>
 
- 
+    <!-- SECCIÓN ALIMENTOS INTEGRADA -->
+    <section id="alimentos" class="alimentos-section">
+        <div class="container">
+            <h3>Nuestros alimentos</h3>
+            <h2>Platillos Estrella</h2>
+            <div class="platillos-grid">
+                <div class="platillo-item">
+                    <img src="TAMPIQUEÑA.jpg" alt="Tampiqueña">
+                    <h4>Sábana de Res Tampiqueña</h4>
+                    <p>Con enchiladas, rajas y frijoles.</p>
+                </div>
+                <div class="platillo-item">
+                    <img src="CEMITA_DE_MILANESA.jpg" alt="Cemita">
+                    <h4>Cemita Poblana</h4>
+                    <p>Milanesa crujiente y quesillo fresco.</p>
+                </div>
+                <div class="platillo-item">
+                    <img src="CHALUPAS.jpg" alt="Chalupas">
+                    <h4>Chalupas Poblanas</h4>
+                    <p>Tradición en cada bocado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="about-hours-section">
         <div class="container-flex">
             <div class="about-box">
-                <img src="https://static.wixstatic.com/media/30fea6_85547295ebc44582b9352cf9035ce233~mv2.jpg" alt="Chalupas Barrocas" class="featured-img">
+                <img src="https://static.wixstatic.com/media/30fea6_85547295ebc44582b9352cf9035ce233~mv2.jpg" alt="Tradición" class="featured-img">
                 <h2>QUIÉNES SOMOS</h2>
-                <p>RESTAURANTE EL RANCHITO es un Restaurante mexicano auténtico que ha servido con orgullo y tradición a las personas de la Heroica Puebla de Zaragoza desde el año de 1953.</p>
-                <div class="action-links">
-                    <a href="tel:2222366034">Más información (Tel)</a>
-                    <a href="mailto:el_ranchito_snfco@hotmail.com">Más información (Email)</a>
-                </div>
+                <p>Servido con orgullo y tradición a Puebla desde 1953.</p>
             </div>
             <div class="hours-box">
-                <img src="https://static.wixstatic.com/media/30fea6_311fc9abbff048d0b54385a840d3d426~mv2.jpg" alt="Chocolate" class="featured-img small-img">
-                <h2>HORARIOS DE APERTURA</h2>
-                <p>Come con nosotros o pide para llevar</p>
+                <img src="https://static.wixstatic.com/media/30fea6_311fc9abbff048d0b54385a840d3d426~mv2.jpg" alt="Chocolate" class="featured-img">
+                <h2>HORARIOS</h2>
                 <p class="hours-time">Lunes - Domingo: 10:00 a. m. - 21:00 p. m.</p>
             </div>
         </div>
@@ -91,17 +365,14 @@
 
     <section id="contacto" class="contacto-section">
         <div class="container">
-            <h3>Inicio: Contacto</h3>
             <h2>CONTACTO</h2>
-            <p class="address">Calle 10 Nte. 5, Barrio del Alto, 72000 Puebla, Pue., Mexico</p>
-            <p><a href="mailto:el_ranchito_snfco@hotmail.com">el_ranchito_snfco@hotmail.com</a></p>
-            <p>Teléfonos:</p>
-            <p><a href="tel:+522228886515">222 888 6515</a> | <a href="tel:+522225692547">222 569 2547</a></p>
+            <p class="address">Calle 10 Nte. 5, Barrio del Alto, Puebla, México</p>
+            <p>Tel: 222 888 6515 | 222 569 2547</p>
         </div>
     </section>
 
     <footer>
-        <p>©2020 por RESTAURANTE EL RANCHITO. Hosteado en GitHub Pages.</p>
+        <p>©2026 Restaurante El Ranchito. Sazón Inolvidable.</p>
     </footer>
 
 </body>
